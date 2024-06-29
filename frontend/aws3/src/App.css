@@ -1,0 +1,548 @@
+#root {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+.loading {
+  transition: spin 0.5s;
+  animation: spin 1s linear infinite;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3498db;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  margin: 0 auto;
+}
+
+button {
+  border-radius: 5px;
+  border: 1px solid transparent;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.error-container {
+  background-color: #dd2929;
+  padding: 0.125em 0.5em;
+  margin-bottom: 1em;
+  border-radius: 5px;
+  p {
+    font-size: 1em;
+    color: #ffffff;
+    margin: 0;
+    font-weight: 500;
+  }
+}
+
+body {
+  font-size: 16px;
+}
+.no-bucket {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+.app {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  width: 100%;
+  background-color: #a0a4a738;
+}
+
+.left-side {
+  width: 30%;
+}
+
+.right-side {
+  width: 70%;
+}
+
+.divider {
+  width: 10px;
+  background-color: #f1f1f1;
+
+  margin-left: 10px;
+}
+
+h1 {
+  color: #333;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-header {
+  p {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+.form-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-inputs {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+select {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.disconnect-button {
+  padding: 10px 15px;
+  font-size: 14px;
+  background-color: #dc3545;
+  color: white;
+  cursor: pointer;
+}
+
+.auth-button.valid {
+  padding: 10px 15px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.auth-button.valid:hover {
+  background-color: #0056b3;
+}
+
+.auth-button.invalid {
+  padding: 10px 15px;
+  font-size: 14px;
+  background-color: grey;
+  color: white;
+  cursor: not-allowed;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+.path-bucket {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+.path-bucket .bucket-name {
+  text-align: right;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.path-bucket .path-name {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: #241111;
+}
+
+.path-bucket span {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.path-bucket span:first-child {
+  text-align: left;
+}
+.buckets,
+.objects {
+  margin-top: 20px;
+}
+
+.objects {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.buckets-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.buckets-tools {
+  border-bottom: 2px solid #ccc;
+}
+
+.tools {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.create-bucket {
+  padding: 10px 15px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+}
+
+.create-bucket:hover {
+  background-color: #0056b3;
+}
+
+.delete-bucket {
+  padding: 10px 15px;
+  font-size: 14px;
+  color: white;
+}
+
+.delete-bucket.selected {
+  background-color: #dc3545;
+}
+
+.delete-bucket.selected:hover {
+  background-color: #461a1e;
+}
+
+.delete-bucket.disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+.list-objects {
+  padding: 10px 15px;
+  font-size: 14px;
+}
+
+.list-objects.disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+.list-objects.selected {
+  background-color: #007bff;
+}
+
+.list-objects.selected:hover {
+  background-color: #0056b3;
+}
+
+.buckets {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.bucket {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.bucket:hover {
+  background-color: #f0f0f0;
+}
+
+.bucket.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+.object-tools {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.object-tools .left,
+.object-tools .right {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.object-tools .file-upload {
+  border-radius: 5px;
+  display: flex;
+  max-width: 300px;
+  max-height: 40px;
+  overflow: hidden;
+  gap: 10px;
+  padding: 10px;
+  align-items: center;
+  line-height: 10px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.object-tools .file-upload label {
+  cursor: pointer;
+}
+
+.object-tools .file-upload input {
+  display: none;
+}
+
+.object-tools .download-button,
+.object-tools .upload-button,
+.object-tools .back-button,
+.object-tools .delete-folder-button,
+.object-tools .create-folder-button,
+.object-tools .clear-selection-button,
+.object-tools .delete-selected-button {
+  min-width: 100px;
+  max-height: 40px;
+  padding: 10px;
+  justify-content: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.object-item {
+  padding: 10px;
+  margin: 5px 0;
+  list-style: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s;
+}
+
+.object-item:hover {
+  background-color: #e9e9e9;
+}
+
+.object-item.selected {
+  background-color: #d1e7fd;
+  border-color: #a3c4f3;
+}
+
+.object-name {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.object-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.object-size,
+.object-modified {
+  font-size: 0.9em;
+  color: #555;
+}
+
+.folder-item {
+  padding: 10px;
+  margin: 5px 0;
+  list-style: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s;
+}
+
+.folder-item:hover {
+  background-color: #e9e9e9;
+}
+
+.folder-item.selected {
+  background-color: #d1e7fd;
+  border-color: #a3c4f3;
+}
+
+.folder-content {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.folder-icon {
+  width: 20px;
+}
+
+.folder-name {
+  font-weight: bold;
+  color: #333;
+}
+
+li {
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: #f0f0f0;
+}
+
+li.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+/* DOWNLOAD */
+.download-progress {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.progress-bar::-webkit-progress-bar {
+  background-color: #f2f2f2;
+}
+
+.progress-bar::-webkit-progress-value {
+  background-color: #007bff;
+  border-radius: 4px;
+}
+
+.progress-text {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .object-tools {
+    flex-direction: column;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+}
+
+/* MODAL STYLES */
+.modal-confirm,
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 90%;
+}
+
+.modal-confirm .modal-content {
+  text-align: center;
+}
+
+.modal-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.modal-content button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.modal-content button:hover {
+  opacity: 0.8;
+}
